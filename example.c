@@ -21,7 +21,12 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-uint16_t _btn1 = 0; // define value for each button!
+struct {
+	uint8_t btn1;
+	uint8_t btn2;
+	uint8_t btnUp;
+	uint8_t btnDn;
+}buttons_t; // define variable for each button!
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -39,9 +44,9 @@ uint16_t _btn1 = 0; // define value for each button!
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN PFP */
-static void Toggle_LED(void);
-void HAL_BtnRelease(uint16_t *_key, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*key_fcn)(void));
-void HAL_BtnPress(uint16_t *_btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*btn_fcn)(void));
+static void ToggleLED(void);
+void BtnRelease(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void));
+void BtnPress(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void));
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -70,8 +75,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_BtnPress(&_btn1, Btn_GPIO_Port, Btn_Pin, Toggle_LED);
-	  //HAL_BtnRelease(&_btn1, Btn_GPIO_Port, Btn_Pin, Toggle_LED);
+	  //BtnPress(&buttons_t.btnUp, B1_GPIO_Port, B1_Pin, ToggleLED);
+	  BtnRelease(&buttons_t.btnDn, B1_GPIO_Port, B1_Pin, ToggleLED);
 
     /* USER CODE END WHILE */
 
@@ -82,32 +87,32 @@ int main(void)
 
 /* USER CODE BEGIN 4 */
 
-void HAL_BtnRelease(uint16_t *_btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*btn_fcn)(void)) {
-	register uint16_t btn_event = (GPIOx->IDR & GPIO_Pin);
-	if (!*_btn && !btn_event) {
-		*_btn = 1;
-	} else if (*_btn && btn_event) {
-		if (!++*_btn) {
-			if (btn_fcn) {
-				btn_fcn();
+void BtnRelease(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void)) {
+	register uint16_t rBtnEvent = (GPIOx->IDR & GPIO_Pin);
+	if (!*btn && !rBtnEvent) {
+		*btn = 1;
+	} else if (*btn && rBtnEvent) {
+		if (!++*btn) {
+			if (BtnFcn) {
+				BtnFcn();
 			}
 		}
 	}
 }
 
-void HAL_BtnPress(uint16_t *_btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*btn_fcn)(void)) {
-  register uint16_t btn_event = (GPIOx->IDR & GPIO_Pin);
-  if(!*_btn && !btn_event) {
-      *_btn = 1;
-      if(btn_fcn) {
-    	  btn_fcn();
+void BtnPress(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void)) {
+  register uint16_t rBtnEvent = (GPIOx->IDR & GPIO_Pin);
+  if(!*btn && !rBtnEvent) {
+      *btn = 1;
+      if(BtnFcn) {
+    	  sBtnFcn();
         }
-    } else if(*_btn && btn_event) {
-      (*_btn)++;
+    } else if(*btn && rBtnEvent) {
+      (*btn)++;
     }
 }
 
-static void Toggle_LED(void) {
-	HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
+static void ToggleLED(void) {
+	HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
 }
 /* USER CODE END 4 */

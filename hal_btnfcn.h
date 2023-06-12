@@ -39,8 +39,8 @@
 
 /* Exported functions prototypes ---------------------------------------------*/
 
-void HAL_BtnRelease(uint16_t *_btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*btn_fcn)(void));
-void HAL_BtnPress(uint16_t *_btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*btn_fcn)(void));
+void BtnRelease(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void));
+void BtnPress(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void));
 
 /* USER CODE BEGIN EFP */
 

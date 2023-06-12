@@ -51,14 +51,14 @@
 /**
   * @brief This function handles button event upon pressing and releasing.
   */
-void HAL_BtnRelease(uint16_t *_btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*btn_fcn)(void)) {
-	register uint16_t btn_event = (GPIOx->IDR & GPIO_Pin);
-	if (!*_btn && !btn_event) {
-		*_btn = 1;
-	} else if (*_btn && btn_event) {
-		if (!++*_btn) {
-			if (btn_fcn) {
-				btn_fcn();
+void BtnRelease(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void)) {
+	register uint16_t rBtnEvent = (GPIOx->IDR & GPIO_Pin);
+	if (!*btn && !rBtnEvent) {
+		*btn = 1;
+	} else if (*btn && rBtnEvent) {
+		if (!++*btn) {
+			if (BtnFcn) {
+				BtnFcn();
 			}
 		}
 	}
@@ -67,15 +67,15 @@ void HAL_BtnRelease(uint16_t *_btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void
 /**
   * @brief This function handles button event upon pressing.
   */
-void HAL_BtnPress(uint16_t *_btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*btn_fcn)(void)) {
-  register uint16_t key_event = (GPIOx->IDR & GPIO_Pin);
-  if(!*_btn && !btn_event) {
-      *_btn = 1;
-      if(btn_fcn) {
-    	  btn_fcn();
+void BtnPress(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void)) {
+  register uint16_t rBtnEvent = (GPIOx->IDR & GPIO_Pin);
+  if(!*btn && !rBtnEvent) {
+      *btn = 1;
+      if(BtnFcn) {
+    	  sBtnFcn();
         }
-    } else if(*_btn && btn_event) {
-      (*_btn)++;
+    } else if(*btn && rBtnEvent) {
+      (*btn)++;
     }
 }
 
