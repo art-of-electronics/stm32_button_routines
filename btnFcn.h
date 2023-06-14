@@ -1,7 +1,7 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    hal_btnfcn.h
+  * @file    btnFcn.h
   * @brief   This file contains the headers of the button handling routines.
   ******************************************************************************
   * @attention
@@ -14,8 +14,8 @@
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __HAL_BTNFCN_H
-#define __HAL_BTNFCN_H
+#ifndef __BTNFCN_H
+#define __BTNFCN_H
 
 #ifdef __cplusplus
  extern "C" {
@@ -50,4 +50,4 @@ void BtnPress(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFc
 }
 #endif
 
-#endif /* __HAL_BTNFCN_H */
+#endif /* __BTNFCN_H */
