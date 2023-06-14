@@ -1,7 +1,7 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    hal_btnfcn.c
+  * @file    btnFcn.c
   * @brief   Nonblocking routines for button handling.
   ******************************************************************************
   * @attention
@@ -14,7 +14,7 @@
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
-#include "hal_btnfcn.h"
+#include "btnFcn.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */

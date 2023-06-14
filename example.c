@@ -76,7 +76,7 @@ int main(void)
   while (1)
   {
 	  //BtnPress(&buttons_t.btnUp, B1_GPIO_Port, B1_Pin, ToggleLED);
-	  BtnRelease(&buttons_t.btnDn, B1_GPIO_Port, B1_Pin, ToggleLED);
+	  BtnRelease(&buttons_t.btnDn, B1_GPIO_Port, B1_Pin, ToggleLED); //defined for Nucleo board
 
     /* USER CODE END WHILE */
 
