@@ -14,8 +14,8 @@
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __BTNFCN_H
-#define __BTNFCN_H
+#ifndef BTNFCN_H
+#define BTNFCN_H
 
 #ifdef __cplusplus
  extern "C" {
@@ -50,4 +50,4 @@ void BtnPress(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFc
 }
 #endif
 
-#endif /* __BTNFCN_H */
+#endif /* BTNFCN_H */

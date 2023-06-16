@@ -72,7 +72,7 @@ void BtnPress(uint8_t *btn, GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, void (*BtnFc
   if(!*btn && !rBtnEvent) {
       *btn = 1;
       if(BtnFcn) {
-    	  sBtnFcn();
+    	  BtnFcn();
         }
     } else if(*btn && rBtnEvent) {
       (*btn)++;
