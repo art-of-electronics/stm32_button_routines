@@ -1,7 +1,7 @@
 # stm32_button_routines
 Routines for handling buttons done the right way :)
 
-If you ever struggled with handling buttons in your MCU project - struggle no more. Here is a good example of button routines for STM32 microcontrollers coded with HAL in CubeMX IDE.
+If you ever struggled with handling buttons in your MCU project - struggle no more. Here is a good example of button routines for STM32 microcontrollers coded with HAL in CubeIDE.
 
 No interrupt nor lame 20ms delay "debounce". 
 
