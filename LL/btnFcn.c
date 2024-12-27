@@ -1,5 +1,5 @@
 /**
- * Project: F103_Buttons_HAL
+ * Project: F103_Buttons_LL
  * 
  * @file btnFcn.c
  * 
@@ -37,9 +37,9 @@
                            INTERFACE IMPLEMENTATION
 *****************************************************************************/
 
-uint8_t BtnRelease(uint8_t *btn, GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void))
+uint8_t BtnRelease(uint8_t *btn, GPIO_TypeDef *GPIOx, uint32_t GPIO_Pin, void (*BtnFcn)(void))
 {
-  uint8_t btnEvent = HAL_GPIO_ReadPin(GPIOx, GPIO_Pin);
+  uint8_t btnEvent = LL_GPIO_IsInputPinSet(GPIOx, GPIO_Pin);
 
   if (!*btn && !btnEvent)
   {
@@ -59,9 +59,9 @@ uint8_t BtnRelease(uint8_t *btn, GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, void (*
 }
 
 
-uint8_t BtnPress(uint8_t *btn, GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, void (*BtnFcn)(void))
+uint8_t BtnPress(uint8_t *btn, GPIO_TypeDef *GPIOx, uint32_t GPIO_Pin, void (*BtnFcn)(void))
 {
-  uint8_t btnEvent = HAL_GPIO_ReadPin(GPIOx, GPIO_Pin);
+  uint8_t btnEvent = LL_GPIO_IsInputPinSet(GPIOx, GPIO_Pin);
 
   if (!(*btn) && !btnEvent)
   {
@@ -78,6 +78,7 @@ uint8_t BtnPress(uint8_t *btn, GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin, void (*Bt
   }
   return btnEvent;
 }
+
 
 /*****************************************************************************
                         PRIVATE FUNCTION IMPLEMENTATION

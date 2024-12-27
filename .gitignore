@@ -1,0 +1,64 @@
+# STM32CubeIDE specific directories and files
+/*/.settings/
+# /*/.cproject
+# /*/.project
+
+# Build output directories
+/*/Debug/
+/*/Release/
+/*/build/
+
+# Object and compiled files
+*.o
+*.elf
+*.axf
+*.bin
+*.hex
+*.d
+*.map
+*.list
+*.lst
+*.out
+*.srec
+*.dep
+*.dmp
+
+# Libraries and executables
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+
+# CMake and Makefile artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Log files and other temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.pid
+
+# Auto-generated files (e.g., HAL/LL, CubeMX-generated)
+# /*/Drivers/CMSIS/*
+# /*/Drivers/STM32*/*
+
+# CubeMX configuration files
+# /*/.mxproject
+/*/*.launch
+
+# Backup files
+*.orig
+*.old
+*.backup
+
+# Miscellaneous system files
+.DS_Store
+Thumbs.db
+desktop.ini
